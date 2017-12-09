@@ -40,6 +40,7 @@ public class Points_master : MonoBehaviour
             {
                 Points += temp[j]._PointsAwarded;
                 Debug.Log(Points);
+                _IntactObjects.Remove(temp[j]);
                 Destroy(temp[j].gameObject);
             }
         }
