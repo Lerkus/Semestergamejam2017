@@ -5,7 +5,7 @@ using UnityEngine;
 public class Actor : MonoBehaviour {
 
     [SerializeField]
-    float minWaitingTime, maxWaitingTime; //waiting time in ms
+    float minWaitingTime, maxWaitingTime; //waiting time
     [SerializeField]
     float moveSpeed, maxWalkDestination;
     

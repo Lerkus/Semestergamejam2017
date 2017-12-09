@@ -6,6 +6,7 @@ TagManager:
   tags:
   - phase2
   - phase1
+  - base
   layers:
   - Default
   - TransparentFX
