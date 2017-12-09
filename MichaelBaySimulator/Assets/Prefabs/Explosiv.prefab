@@ -34,6 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4467568821627052}
+  - component: {fileID: 114965342382787296}
   m_Layer: 0
   m_Name: Phase1
   m_TagString: phase1
@@ -97,3 +98,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114965342382787296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1537279126921240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e03818950294daf4195640e63434d1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombTemplate: {fileID: 0}
