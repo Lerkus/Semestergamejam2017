@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1387680664088648
 GameObject:
   m_ObjectHideFlags: 1
@@ -171,6 +171,8 @@ MonoBehaviour:
   _BombRadius: 0
   _ExplosionRadius: 0
   _ExplodingTimer: 2
+  explodingBomb: {fileID: 1761895168230828, guid: b90d1041ed0201a42a81317b4c7fc4df,
+    type: 2}
   triggered: 0
 --- !u!212 &212041855784677586
 SpriteRenderer:
@@ -207,7 +209,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1ac00bbcb5ce6fd46bfeee2aa6d6a1c8, type: 3}
-  m_Color: {r: 0.034482718, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -337,7 +339,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_FlipX: 0

@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Points_master : MonoBehaviour
 {
+
+    public Text text;
 
     private List<Points_slave> _IntactObjects = new List<Points_slave>();
 
@@ -38,8 +41,7 @@ public class Points_master : MonoBehaviour
             temp = whatDidThatBombHit(ExplodedBombs[i]);
             for (int j = 0; j < temp.Count; j++)
             {
-                Points += temp[j]._PointsAwarded;
-                Debug.Log(Points);
+                AddScore(temp[j]._PointsAwarded);
                 _IntactObjects.Remove(temp[j]);
                 Destroy(temp[j].gameObject);
             }
@@ -75,5 +77,12 @@ public class Points_master : MonoBehaviour
         }
 
         return temp;
+    }
+
+    public void AddScore(int amountToAdd)
+    {
+        Points += amountToAdd;
+        text.text = "Score: " + Points;
+        Debug.Log(Points);
     }
 }

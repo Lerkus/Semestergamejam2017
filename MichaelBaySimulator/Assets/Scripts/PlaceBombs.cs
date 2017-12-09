@@ -106,7 +106,7 @@ public class PlaceBombs : MonoBehaviour
         explosiv.GetComponent<Bomb_slave>()._ExplosionRadius = currentPlaceableExplosiv.GetComponent<Bomb_slave>()._ExplosionRadius;
         positionedExplosivs.Add(explosiv, explosiv.transform.localScale.x);
 
-        Debug.Log("Explosiv placed at " + explosivPosition + " with intensity " + buttonPressDuration);
+        Debug.Log("Explosiv placed at " + explosivPosition + " with intensity " + explosiv.GetComponent<Bomb_slave>()._BombRadius);
         buttonPressDuration = 0f;
         currentPlaceableExplosiv.SetActive(false);
     }

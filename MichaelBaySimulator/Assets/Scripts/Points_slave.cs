@@ -6,7 +6,9 @@ public class Points_slave : MonoBehaviour
 {
 
     public float _BodyRadius = 0;
-    public float _PointsAwarded = 0;
+    public int _PointsAwarded = 0;
+
+    public GameObject explosion;
 
     private string _PointsControllerName = "PointsController";
 
@@ -14,5 +16,10 @@ public class Points_slave : MonoBehaviour
     {
         gameObject.transform.SetParent(GameObject.Find(_PointsControllerName).transform);
         transform.parent.gameObject.GetComponent<Points_master>().addNewIntactObject(this);
+    }
+
+    void OnDestroy()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
     }
 }
