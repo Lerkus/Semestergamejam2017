@@ -6,7 +6,7 @@ public class Bomb_slave : MonoBehaviour
 {
     public float _BombRadius = 0;
     public float _ExplosionRadius = 0;
-    public float _ExplodingTimer = 2;
+    public float _ExplodingTimer = 0;
 
 
     private readonly string _BombControllerName = "BombController";
@@ -38,16 +38,18 @@ public class Bomb_slave : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (transform.GetChild(1).gameObject.activeSelf)
+        if (transform.GetChild(0).gameObject.activeSelf)
         {
+            //Phase 1
+        }
+        else {
             transform.parent.gameObject.GetComponent<Bomb_master>().TriggerBomb(this);
         }
     }
-
+    
     public void ExplodeBomb()
     {
         explode = true;
     }
-
 
 }
