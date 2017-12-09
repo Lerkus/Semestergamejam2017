@@ -16,7 +16,7 @@ public class Bomb_slave : MonoBehaviour
     private readonly float explosionScalingFactor = 0.1f;
     private readonly int blinkScale = 8;
 
-    public bool triggered; //TODO: Make private
+    public int _ChainedExplosions = 0;
     private bool explode;
 
     public void Start()
@@ -24,7 +24,7 @@ public class Bomb_slave : MonoBehaviour
         gameObject.transform.SetParent(GameObject.Find(_BombControllerName).transform);
         //gameObject.transform.parent.gameObject.GetComponent<Bomb_master>().addWaitingBomb(this);
         transform.GetChild(1).gameObject.SetActive(false);
-        triggered = false;
+        _ChainedExplosions = 0;
         explode = false;
     }
 
@@ -65,13 +65,13 @@ public class Bomb_slave : MonoBehaviour
         }
         else
         {
-            ExplodeBomb();
+            ExplodeBomb(0);
         }
     }
 
-    public void ExplodeBomb()
+    public void ExplodeBomb(int AmountOfPreviousChainedExplosions)
     {
-        triggered = true;
+        _ChainedExplosions = AmountOfPreviousChainedExplosions + 1;
         explode = true;
     }
 
