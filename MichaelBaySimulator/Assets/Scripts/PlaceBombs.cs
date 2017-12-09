@@ -10,15 +10,18 @@ public class PlaceBombs : MonoBehaviour {
     public float maximumExplosivScale;
     public float scalingFactorMultiplier;
     public Sprite scenerySprite; // bounds of placing bombs;
+    public GameObject bombController;
 
 
     private float buttonPressDuration;
     private GameObject currentPlaceableExplosiv;
     private Rect sceeneryRect;
+    private bool onBomb;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
+        onBomb = false;
         positionedExplosivs = new Dictionary<GameObject, float>();
         buttonPressDuration = 0f;
         currentPlaceableExplosiv = Instantiate(bombTemplate, Vector2.zero, Quaternion.identity ) as GameObject;
@@ -36,28 +39,41 @@ public class PlaceBombs : MonoBehaviour {
 
     // Update is called once per frame
     void Update ()
-    { 
+    {
         //Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-       /* if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
-            Debug.Log("contains");
-            return;
-        }*/
+        /* if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
+             Debug.Log("contains");
+             return;
+         }*/
 
         /*if(positionedExplosivs.Count == maxPlaceableExplosivs )
         {
             // only "start film scene" button can be pressed?
         }*/
+        
         if (Input.GetMouseButtonDown(MouseLeftButton))
         {
+            RaycastHit2D hit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition));
+            if (hit.collider != null && hit.transform.tag.Equals("base"))
+            {
+                Debug.Log("Clicked on Bomb");
+                onBomb = true;
+                return;
+            }
             StartPlacing();
         }
 
-		if (Input.GetMouseButton(MouseLeftButton))
+		if (Input.GetMouseButton(MouseLeftButton) && !onBomb)
         {
             UpdateExplosiveIndicator();  
         }
         if (Input.GetMouseButtonUp(MouseLeftButton))
         {
+            if (onBomb)
+            {
+                onBomb = false;
+                return;
+            }
             InstantiateExplosive();
         }
 	}
@@ -88,8 +104,8 @@ public class PlaceBombs : MonoBehaviour {
         currentPlaceableExplosiv.transform.position = currentMousePosition;
         float scalingFactor = Mathf.Sin(buttonPressDuration * scalingFactorMultiplier - Mathf.PI/2) * maximumExplosivScale + maximumExplosivScale + 1;
         currentPlaceableExplosiv.transform.localScale = new Vector2(scalingFactor, scalingFactor);
-        currentPlaceableExplosiv.GetComponent<Bomb_slave>()._BombRadius = scalingFactor;
-        currentPlaceableExplosiv.GetComponent<Bomb_slave>()._ExplosionRadius = scalingFactor * 2;
+        currentPlaceableExplosiv.GetComponent<Bomb_slave>()._BombRadius = currentPlaceableExplosiv.transform.GetChild(0).transform.lossyScale.x/10;
+        currentPlaceableExplosiv.GetComponent<Bomb_slave>()._ExplosionRadius = currentPlaceableExplosiv.transform.GetChild(0).transform.lossyScale.x/5; //scalingFactor * 2
         buttonPressDuration += Time.deltaTime;
     }
 }
