@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34aee4c22f841e4eaceb83c3c88904f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 12
-  fadeDuration: 0.8
+  moveSpeed: 50
+  fadeDuration: 0.7
 --- !u!114 &114388776658825694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,11 +63,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6e03f4bc19a0c4a49b8bb534d0450dde, type: 3}
-    m_FontSize: 90
+    m_FontSize: 120
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 90
+    m_MinSize: 1
+    m_MaxSize: 120
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
