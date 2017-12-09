@@ -12,6 +12,7 @@ public class Gamemaster : MonoBehaviour {
 
     private readonly string _Phase1Tag = "phase1";
     private readonly string _Phase2Tag = "phase2";
+    private readonly string _BaseTag = "base";
 
     public phase _CurrentPhase
     {
@@ -24,38 +25,39 @@ public class Gamemaster : MonoBehaviour {
         _CurrentPhase = phase.place;
         if ((int)_CurrentPhase == 0)
         {
-            SetStateOfStateObjects(true, _Phase1Tag);
-            SetStateOfStateObjects(false, _Phase2Tag);
+            SetStateOfStateObjects(true, phase.place);
+            SetStateOfStateObjects(false, phase.explode);
         }
+
+        StartNextPhase();
     }
 
     public void StartNextPhase()
     {
-        GameObject[] TempObjects = null;
         if ((int)_CurrentPhase < 2)
         {
             _CurrentPhase++;
 
             if ((int)_CurrentPhase == 1)
             {
-                SetStateOfStateObjects(false, _Phase1Tag);
-                SetStateOfStateObjects(true, _Phase2Tag);
+                SetStateOfStateObjects(false, phase.place);
+                SetStateOfStateObjects(true, phase.explode);
             }
 
             if ((int)_CurrentPhase == 2)
             {
-                SetStateOfStateObjects(false, _Phase1Tag);
-                SetStateOfStateObjects(false, _Phase2Tag);
+                SetStateOfStateObjects(false, phase.place);
+                SetStateOfStateObjects(false, phase.explode);
             }
         }
     } 
 
-    private void SetStateOfStateObjects(bool enabled, string Phasetag)
+    private void SetStateOfStateObjects(bool enabled, phase phaseChildsToBeAffected)
     {
-        GameObject[] TempObjects = GameObject.FindGameObjectsWithTag(Phasetag);
+        GameObject[] TempObjects = GameObject.FindGameObjectsWithTag(_BaseTag);
         for (int i = 0; i < TempObjects.GetLength(0); i++)
         {
-            TempObjects[i].transform.GetChild(0).gameObject.SetActive(enabled);
+            TempObjects[i].transform.GetChild((int)phaseChildsToBeAffected).gameObject.SetActive(enabled);
         }
     }
 }
