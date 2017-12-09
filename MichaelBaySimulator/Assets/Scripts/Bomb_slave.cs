@@ -29,7 +29,7 @@ public class Bomb_slave : MonoBehaviour
         {
             _ExplodingTimer -= Time.deltaTime;
             Debug.Log("Explosion in " + _ExplodingTimer + "s!");
-            if(_ExplodingTimer <= 0)
+            if (_ExplodingTimer <= 0)
             {
                 Destroy(this.gameObject);
             }
@@ -42,14 +42,20 @@ public class Bomb_slave : MonoBehaviour
         {
             //Phase 1
         }
-        else {
+        else
+        {
             transform.parent.gameObject.GetComponent<Bomb_master>().TriggerBomb(this);
         }
     }
-    
+
     public void ExplodeBomb()
     {
         explode = true;
     }
 
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, _ExplosionRadius);
+    }
 }
