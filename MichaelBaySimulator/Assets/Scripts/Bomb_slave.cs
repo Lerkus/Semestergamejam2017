@@ -8,7 +8,7 @@ public class Bomb_slave : MonoBehaviour
     public float _ExplosionRadius = 0;
     public float _ExplodingTimer = 0;
 
-    public GameObject explodingBomb;
+    public GameObject[] explodingBomb;
     public Sprite triggeredSprite;
 
 
@@ -44,10 +44,11 @@ public class Bomb_slave : MonoBehaviour
             if (_ExplodingTimer <= 0)
             {
                 GameObject explodeAnim;
+                int randomExplosion = Random.Range(0, 2);
                 transform.parent.gameObject.GetComponent<Bomb_master>().TriggerOtherBombs(this);
                 transform.parent.GetComponent<Bomb_master>().pm.calculateBombPoints(this);
                 transform.parent.GetComponent<Bomb_master>().pm.AddScore(Mathf.CeilToInt(_ExplosionRadius));
-                explodeAnim = Instantiate(explodingBomb, transform.position, Quaternion.identity);
+                explodeAnim = Instantiate(explodingBomb[randomExplosion], transform.position, Quaternion.identity);
                 explodeAnim.transform.localScale = this.gameObject.transform.localScale * explosionScalingFactor;
                 explodeAnim.transform.position = new Vector3(explodeAnim.transform.position.x,
                     explodeAnim.transform.position.y + explodeAnim.transform.localScale.y/2,

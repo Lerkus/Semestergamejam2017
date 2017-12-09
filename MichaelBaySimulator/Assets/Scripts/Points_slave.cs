@@ -7,6 +7,8 @@ public class Points_slave : MonoBehaviour
 
     public float _BodyRadius = 0;
     public int _PointsAwarded = 0;
+    public float _ExplosionSize = 1;
+    public bool floorAnim = false;
 
     public GameObject explosion;
 
@@ -20,6 +22,11 @@ public class Points_slave : MonoBehaviour
 
     void OnDestroy()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        GameObject exp = Instantiate(explosion, transform.position, Quaternion.identity);
+        exp.transform.localScale *= _ExplosionSize;
+        if (floorAnim)
+        {
+            exp.transform.position = new Vector3(transform.position.x, transform.position.y - transform.localScale.y/2, transform.position.z);
+        }
     }
 }
