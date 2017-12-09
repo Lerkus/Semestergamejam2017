@@ -23,6 +23,7 @@ public class PlaceBombs : MonoBehaviour {
         buttonPressDuration = 0f;
         currentPlaceableExplosiv = Instantiate(bombTemplate, Vector2.zero, Quaternion.identity ) as GameObject;
         currentPlaceableExplosiv.SetActive(false);
+       // Debug.Log(scenerySprite.rect.ToString() + "/" + scenerySprite.bounds.ToString());
 
 	}
 
@@ -36,7 +37,9 @@ public class PlaceBombs : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-       /* if (scenerySprite.rect.Contains(Input.mousePosition)) {
+        /*Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
+            Debug.Log("contains");
             return;
         }*/
 
