@@ -29,7 +29,7 @@ public class Gamemaster : MonoBehaviour {
             SetStateOfStateObjects(false, phase.explode);
         }
 
-        StartNextPhase();
+        //StartNextPhase();
     }
 
     public void StartNextPhase()
