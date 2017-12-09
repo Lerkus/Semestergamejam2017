@@ -36,9 +36,9 @@ public class PlaceBombs : MonoBehaviour {
 
     // Update is called once per frame
     void Update ()
-    {
-        /*Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
+    { 
+        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+       /* if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
             Debug.Log("contains");
             return;
         }*/
