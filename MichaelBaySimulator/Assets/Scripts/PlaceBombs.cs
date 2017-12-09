@@ -9,20 +9,20 @@ public class PlaceBombs : MonoBehaviour {
     public float maxPlaceableExplosivs;
     public float maximumExplosivScale;
     public float scalingFactorMultiplier;
+    public Sprite scenerySprite; // bounds of placing bombs;
+
 
     private float buttonPressDuration;
     private GameObject currentPlaceableExplosiv;
-    private Vector2 explosivOriginScale;
-    private float deltaSize;
+    private Rect sceeneryRect;
 
 	// Use this for initialization
 	void Start ()
     {
         positionedExplosivs = new Dictionary<GameObject, float>();
         buttonPressDuration = 0f;
-        currentPlaceableExplosiv = Instantiate(bombTemplate, Vector2.zero, Quaternion.identity) as GameObject;
+        currentPlaceableExplosiv = Instantiate(bombTemplate, Vector2.zero, Quaternion.identity ) as GameObject;
         currentPlaceableExplosiv.SetActive(false);
-        explosivOriginScale = currentPlaceableExplosiv.transform.localScale;
 
 	}
 
@@ -36,6 +36,10 @@ public class PlaceBombs : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+       /* if (scenerySprite.rect.Contains(Input.mousePosition)) {
+            return;
+        }*/
+
         /*if(positionedExplosivs.Count == maxPlaceableExplosivs )
         {
             // only "start film scene" button can be pressed?

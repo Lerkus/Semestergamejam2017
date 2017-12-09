@@ -55,7 +55,7 @@ public class Gamemaster : MonoBehaviour {
         GameObject[] TempObjects = GameObject.FindGameObjectsWithTag(Phasetag);
         for (int i = 0; i < TempObjects.GetLength(0); i++)
         {
-            TempObjects[i].transform.GetChild(0).gameObject.SetActive(enabled);
+            TempObjects[i].gameObject.SetActive(enabled);
         }
     }
 }
