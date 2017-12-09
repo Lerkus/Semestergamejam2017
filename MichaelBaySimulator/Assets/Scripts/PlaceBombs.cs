@@ -14,7 +14,6 @@ public class PlaceBombs : MonoBehaviour {
 
     private float buttonPressDuration;
     private GameObject currentPlaceableExplosiv;
-    private Rect sceeneryRect;
 
 	// Use this for initialization
 	void Start ()
@@ -23,7 +22,6 @@ public class PlaceBombs : MonoBehaviour {
         buttonPressDuration = 0f;
         currentPlaceableExplosiv = Instantiate(bombTemplate, Vector2.zero, Quaternion.identity ) as GameObject;
         currentPlaceableExplosiv.SetActive(false);
-       // Debug.Log(scenerySprite.rect.ToString() + "/" + scenerySprite.bounds.ToString());
 
 	}
 
@@ -36,30 +34,37 @@ public class PlaceBombs : MonoBehaviour {
 
     // Update is called once per frame
     void Update ()
-    { 
-        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-       /* if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
-            Debug.Log("contains");
-            return;
-        }*/
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (Input.GetMouseButtonDown(MouseLeftButton))
+            {
+                StartPlacing();
+            }
+
+            if (Input.GetMouseButton(MouseLeftButton))
+            {
+                UpdateExplosiveIndicator();
+            }
+            if (Input.GetMouseButtonUp(MouseLeftButton))
+            {
+                InstantiateExplosive();
+            }    
+        }
+        else
+        {
+            currentPlaceableExplosiv.SetActive(false);
+        }
+
 
         /*if(positionedExplosivs.Count == maxPlaceableExplosivs )
         {
             // only "start film scene" button can be pressed?
         }*/
-        if (Input.GetMouseButtonDown(MouseLeftButton))
-        {
-            StartPlacing();
-        }
-
-		if (Input.GetMouseButton(MouseLeftButton))
-        {
-            UpdateExplosiveIndicator();  
-        }
-        if (Input.GetMouseButtonUp(MouseLeftButton))
-        {
-            InstantiateExplosive();
-        }
+        
 	}
 
     private void StartPlacing()
@@ -70,6 +75,8 @@ public class PlaceBombs : MonoBehaviour {
 
     private void InstantiateExplosive()
     {
+        if (currentPlaceableExplosiv.activeSelf == false)
+            return;
         Vector2 explosivPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject explosiv = Instantiate(bombTemplate, explosivPosition, Quaternion.identity) as GameObject;
         explosiv.transform.localScale = currentPlaceableExplosiv.transform.localScale;
