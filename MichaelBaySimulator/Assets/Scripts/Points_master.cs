@@ -23,6 +23,13 @@ public class Points_master : MonoBehaviour
         _IntactObjects.Add(IntactObject);
     }
 
+    public void calculateBombPoints(Bomb_slave explodedBomb)
+    {
+        List<Bomb_slave> bombList = new List<Bomb_slave>();
+        bombList.Add(explodedBomb);
+        calculateBombPoints(bombList);
+    }
+
     public void calculateBombPoints(List<Bomb_slave> ExplodedBombs)
     {
         List<Points_slave> temp = null;
@@ -32,6 +39,8 @@ public class Points_master : MonoBehaviour
             for (int j = 0; j < temp.Count; j++)
             {
                 Points += temp[j]._PointsAwarded;
+                Debug.Log(Points);
+                Destroy(temp[j].gameObject);
             }
         }
     }

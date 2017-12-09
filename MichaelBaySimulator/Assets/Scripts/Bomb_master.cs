@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 //Diese Klasse wird keinesfalls Speichereffiszient sein...
 public class Bomb_master : MonoBehaviour {
+
+    public Points_master pm;
     
     void Start()
     {

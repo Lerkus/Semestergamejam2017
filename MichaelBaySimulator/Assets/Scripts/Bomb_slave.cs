@@ -28,10 +28,11 @@ public class Bomb_slave : MonoBehaviour
         if (explode)
         {
             _ExplodingTimer -= Time.deltaTime;
-            Debug.Log("Explosion in " + _ExplodingTimer + "s!");
+            //Debug.Log("Explosion in " + _ExplodingTimer + "s!");
             if (_ExplodingTimer <= 0)
             {
                 transform.parent.gameObject.GetComponent<Bomb_master>().TriggerOtherBombs(this);
+                transform.parent.GetComponent<Bomb_master>().pm.calculateBombPoints(this);
                 Destroy(this.gameObject);
             }
         }
@@ -55,9 +56,9 @@ public class Bomb_slave : MonoBehaviour
         explode = true;
     }
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, _ExplosionRadius);
-    }
+    //public void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawSphere(transform.position, _ExplosionRadius);
+    //}
 }
