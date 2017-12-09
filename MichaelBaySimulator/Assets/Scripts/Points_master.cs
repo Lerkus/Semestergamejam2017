@@ -41,7 +41,7 @@ public class Points_master : MonoBehaviour
             temp = whatDidThatBombHit(ExplodedBombs[i]);
             for (int j = 0; j < temp.Count; j++)
             {
-                AddScore(temp[j]._PointsAwarded);
+                AddScore(temp[j]._PointsAwarded * ExplodedBombs[i]._ChainedExplosions);
                 _IntactObjects.Remove(temp[j]);
                 Destroy(temp[j].gameObject);
             }
