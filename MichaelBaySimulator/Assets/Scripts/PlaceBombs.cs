@@ -37,7 +37,7 @@ public class PlaceBombs : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     { 
-        Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //Debug.Log(Camera.main.ScreenToWorldPoint(Input.mousePosition));
        /* if (scenerySprite.rect.Contains(Input.mousePosition, true)) {
             Debug.Log("contains");
             return;
@@ -73,6 +73,8 @@ public class PlaceBombs : MonoBehaviour {
         Vector2 explosivPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         GameObject explosiv = Instantiate(bombTemplate, explosivPosition, Quaternion.identity) as GameObject;
         explosiv.transform.localScale = currentPlaceableExplosiv.transform.localScale;
+        explosiv.GetComponent<Bomb_slave>()._BombRadius = currentPlaceableExplosiv.GetComponent<Bomb_slave>()._BombRadius;
+        explosiv.GetComponent<Bomb_slave>()._ExplosionRadius = currentPlaceableExplosiv.GetComponent<Bomb_slave>()._ExplosionRadius;
         positionedExplosivs.Add(explosiv, explosiv.transform.localScale.x);
 
         Debug.Log("Explosiv placed at " + explosivPosition + " with intensity " + buttonPressDuration);
@@ -84,9 +86,10 @@ public class PlaceBombs : MonoBehaviour {
     {
         Vector2 currentMousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         currentPlaceableExplosiv.transform.position = currentMousePosition;
-        float scalingFactor = Mathf.PingPong(buttonPressDuration * scalingFactorMultiplier, maximumExplosivScale) + 1;
+        float scalingFactor = Mathf.Sin(buttonPressDuration * scalingFactorMultiplier - Mathf.PI/2) * maximumExplosivScale + maximumExplosivScale + 1;
         currentPlaceableExplosiv.transform.localScale = new Vector2(scalingFactor, scalingFactor);
+        currentPlaceableExplosiv.GetComponent<Bomb_slave>()._BombRadius = scalingFactor;
+        currentPlaceableExplosiv.GetComponent<Bomb_slave>()._ExplosionRadius = scalingFactor * 2;
         buttonPressDuration += Time.deltaTime;
-
     }
 }
