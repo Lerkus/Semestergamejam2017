@@ -12,6 +12,7 @@ public class PlaceBombs : MonoBehaviour
     public float scalingFactorMultiplier;
     public Sprite scenerySprite; // bounds of placing bombs;
     public GameObject bombController;
+    public Pause pauseController;
 
     public float _ExplosivRadiusTweaker = 1;
     public float _TriggerRadiusTweaker = 1;
@@ -31,7 +32,6 @@ public class PlaceBombs : MonoBehaviour
         buttonPressDuration = 0f;
         currentPlaceableExplosiv = Instantiate(bombTemplate, Vector2.zero, Quaternion.identity) as GameObject;
         currentPlaceableExplosiv.SetActive(false);
-
     }
 
     private void OnDisable()
@@ -44,6 +44,11 @@ public class PlaceBombs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (pauseController.paused)
+        {
+            return;
+        }
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

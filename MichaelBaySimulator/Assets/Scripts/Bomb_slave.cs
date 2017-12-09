@@ -31,6 +31,7 @@ public class Bomb_slave : MonoBehaviour
             Debug.Log("Explosion in " + _ExplodingTimer + "s!");
             if (_ExplodingTimer <= 0)
             {
+                transform.parent.gameObject.GetComponent<Bomb_master>().TriggerOtherBombs(this);
                 Destroy(this.gameObject);
             }
         }
@@ -44,12 +45,13 @@ public class Bomb_slave : MonoBehaviour
         }
         else
         {
-            transform.parent.gameObject.GetComponent<Bomb_master>().TriggerBomb(this);
+            ExplodeBomb();
         }
     }
 
     public void ExplodeBomb()
     {
+        triggered = true;
         explode = true;
     }
 
