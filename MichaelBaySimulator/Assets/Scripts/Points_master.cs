@@ -7,6 +7,8 @@ public class Points_master : MonoBehaviour
 {
 
     public Text text;
+    public GameObject pointsAddText;
+    public Canvas canvas;
 
     private List<Points_slave> _IntactObjects = new List<Points_slave>();
 
@@ -18,7 +20,7 @@ public class Points_master : MonoBehaviour
 
     public void Start()
     {
-        Points = 0;
+        Points = 100;
     }
 
     public void addNewIntactObject(Points_slave IntactObject)
@@ -41,8 +43,7 @@ public class Points_master : MonoBehaviour
             temp = whatDidThatBombHit(ExplodedBombs[i]);
             for (int j = 0; j < temp.Count; j++)
             {
-                AddScore(temp[j]._PointsAwarded * ExplodedBombs[i]._ChainedExplosions);
-                _IntactObjects.Remove(temp[j]);
+	AddScore(temp[j]._PointsAwarded * ExplodedBombs[i]._ChainedExplosions, temp[j].transform.position);                _IntactObjects.Remove(temp[j]);
                 Destroy(temp[j].gameObject);
             }
         }
@@ -82,7 +83,29 @@ public class Points_master : MonoBehaviour
     public void AddScore(int amountToAdd)
     {
         Points += amountToAdd;
-        text.text = "Score: " + Points;
-        Debug.Log(Points);
+        if(Points < 0)
+        {
+            Points = 0;
+        }
+        text.text = "Viewers: " + Points;
+        Debug.Log(amountToAdd + " Points added.");
+    }
+
+    public void AddScore(int amountToAdd, Vector3 showPosition)
+    {
+        GameObject pointsToAdd;
+        bool positive = amountToAdd > 0 ? true : false;
+        AddScore(amountToAdd);
+        pointsAddText.GetComponent<Text>().text = (positive ? "+" : "") + amountToAdd;
+        pointsToAdd = Instantiate(pointsAddText, transform.position, Quaternion.identity);
+        pointsToAdd.transform.SetParent(canvas.transform, false);
+        pointsToAdd.transform.position = Camera.main.WorldToScreenPoint(showPosition);
+        if (positive)
+        {
+            pointsToAdd.GetComponent<Text>().color = Color.green;
+        } else
+        {
+            pointsToAdd.GetComponent<Text>().color = Color.red;
+        }
     }
 }

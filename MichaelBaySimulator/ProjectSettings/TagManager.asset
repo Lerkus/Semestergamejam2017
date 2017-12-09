@@ -48,3 +48,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Barrels
+    uniqueID: 789109561
+    locked: 0
