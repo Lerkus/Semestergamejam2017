@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Points_slave : MonoBehaviour
 {
@@ -14,19 +15,36 @@ public class Points_slave : MonoBehaviour
 
     private string _PointsControllerName = "PointsController";
 
+    private bool isQuitting = false;
+
     public void Start()
-    {
+    {        
         gameObject.transform.SetParent(GameObject.Find(_PointsControllerName).transform);
         transform.parent.gameObject.GetComponent<Points_master>().addNewIntactObject(this);
     }
+    
 
     void OnDestroy()
     {
-        GameObject exp = Instantiate(explosion, transform.position, Quaternion.identity);
-        exp.transform.localScale *= _ExplosionSize;
-        if (floorAnim)
+        if (!isQuitting)
         {
-            exp.transform.position = new Vector3(transform.position.x, transform.position.y - transform.localScale.y/2, transform.position.z);
+            GameObject exp = Instantiate(explosion, transform.position, Quaternion.identity);
+            exp.transform.localScale *= _ExplosionSize;
+            if (floorAnim)
+            {
+                exp.transform.position = new Vector3(transform.position.x, transform.position.y - transform.localScale.y / 2, transform.position.z);
+            }
         }
     }
+
+    void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
+
+    public void setQuitting()
+    {
+        isQuitting = true;
+    }
+
 }

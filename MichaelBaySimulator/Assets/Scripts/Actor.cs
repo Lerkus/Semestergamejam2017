@@ -3,82 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Actor : MonoBehaviour {
-
-    [SerializeField]
-    float minWaitingTime, maxWaitingTime; //waiting time
+    
     [SerializeField]
     float moveSpeed, maxWalkDestination;
     
-    int actionToPerform; //0: get next action; 1: walk; 2: wait
-    bool startWalk;
-    float timeToWait;
     float walkDestination; //X-Coordinate 
     int walkDirection;
+    float startX;
 
 	// Use this for initialization
-	void Start () {
-        actionToPerform = 0;
-        timeToWait = 0.0f;
-        startWalk = true;
-        walkDestination = transform.position.x;
+	void Start ()
+    {
+        startX = transform.position.x;
+        walkDestination = startX + maxWalkDestination;
+        walkDirection = 1;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        RandomWalk();
+        Walk();
 	}
-
-    void RandomWalk()
-    {
-
-        switch (actionToPerform)
-        {
-            case 0: //Walk
-                Walk();
-                break;
-            case 1: //Wait
-                Wait();
-                break;
-            default:
-                Debug.Log("FATAL ERROR!!11!");
-                break;
-        }
-    }
 
     void Walk()
     {
-        if (startWalk)
+        transform.Translate(walkDirection * moveSpeed * Time.deltaTime, 0, 0);
+        walkDirection = (int)Mathf.Sign(walkDestination - transform.position.x);     
+          
+        if(walkDirection <= 0)
         {
-            walkDestination = Random.Range(-maxWalkDestination, maxWalkDestination);
-            startWalk = false;
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            walkDestination = startX;
         } else
         {
-            transform.Translate(Mathf.Sign(walkDestination - transform.position.x) * moveSpeed * Time.deltaTime, 0, 0);
-            if (Mathf.Abs(walkDestination - transform.position.x) <= 1.0f)
-            {
-                Debug.Log("asdf");
-                actionToPerform = 1;
-                startWalk = true;
-            }
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            walkDestination = startX + maxWalkDestination;
         }
+        
     }
-
-    void Wait()
-    {
-        if (timeToWait <= 0)
-        {
-            timeToWait = Random.Range(minWaitingTime, maxWaitingTime);
-        }
-        else
-        {
-            timeToWait -= Time.deltaTime;
-            if (timeToWait <= 0)
-            {
-                Debug.Log("Wait");
-                actionToPerform = 0;
-            }
-        }
-    }
-
-
+    
 }

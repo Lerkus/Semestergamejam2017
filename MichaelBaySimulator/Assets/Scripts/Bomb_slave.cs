@@ -47,7 +47,7 @@ public class Bomb_slave : MonoBehaviour
                 int randomExplosion = Random.Range(0, 2);
                 transform.parent.gameObject.GetComponent<Bomb_master>().TriggerOtherBombs(this);
                 transform.parent.GetComponent<Bomb_master>().pm.calculateBombPoints(this);
-                transform.parent.GetComponent<Bomb_master>().pm.AddScore(Mathf.CeilToInt(_ExplosionRadius));
+                transform.parent.GetComponent<Bomb_master>().pm.AddScore(Mathf.CeilToInt(_ExplosionRadius), transform.position);
                 explodeAnim = Instantiate(explodingBomb[randomExplosion], transform.position, Quaternion.identity);
                 explodeAnim.transform.localScale = this.gameObject.transform.localScale * explosionScalingFactor;
                 explodeAnim.transform.position = new Vector3(explodeAnim.transform.position.x,
