@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Points_slave : MonoBehaviour
 {
@@ -17,10 +18,11 @@ public class Points_slave : MonoBehaviour
     private bool isQuitting = false;
 
     public void Start()
-    {
+    {        
         gameObject.transform.SetParent(GameObject.Find(_PointsControllerName).transform);
         transform.parent.gameObject.GetComponent<Points_master>().addNewIntactObject(this);
     }
+    
 
     void OnDestroy()
     {
@@ -39,4 +41,10 @@ public class Points_slave : MonoBehaviour
     {
         isQuitting = true;
     }
+
+    public void setQuitting()
+    {
+        isQuitting = true;
+    }
+
 }

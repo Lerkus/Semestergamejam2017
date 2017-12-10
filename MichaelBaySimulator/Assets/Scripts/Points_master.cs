@@ -108,4 +108,12 @@ public class Points_master : MonoBehaviour
             pointsToAdd.GetComponent<Text>().color = Color.red;
         }
     }
+
+    public void SetSlavesQuitting()
+    {
+        for(int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).GetComponent<Points_slave>().setQuitting();
+        }
+    }
 }

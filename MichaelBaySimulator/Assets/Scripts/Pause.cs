@@ -7,6 +7,7 @@ public class Pause : MonoBehaviour {
 
     public GameObject PausePanel;
     public GameObject[] otherGUI;
+    public Points_master pointsMaster;
 
     public bool paused;
 
@@ -48,6 +49,7 @@ public class Pause : MonoBehaviour {
 
     public void MainMenu()
     {
+        pointsMaster.SetSlavesQuitting();
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
