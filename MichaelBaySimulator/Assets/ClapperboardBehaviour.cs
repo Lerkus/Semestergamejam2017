@@ -6,9 +6,10 @@ public class ClapperboardBehaviour : MonoBehaviour {
 
     public Gamemaster gm;
 
+    bool pressed = false;
+
     public void OnStartFilmSceneButtonPressed()
     {
-        // maybe animated clapperboard?
-        gm.StartNextPhase();
+            gm.StartNextPhase();
     }
 }

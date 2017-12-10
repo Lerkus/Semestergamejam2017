@@ -8,7 +8,7 @@ public class Bomb_master : MonoBehaviour {
 
     public Points_master pm;
 
-    bool bombAdded = false;
+    public bool bombAdded = false;
 
     void Start()
     {

@@ -9,7 +9,6 @@ public class Bomb_slave : MonoBehaviour
     public float _ExplodingTimer = 0;
 
     public GameObject[] explodingBomb;
-    public Sprite triggeredSprite;
 
 
     private readonly string _BombControllerName = "BombController";

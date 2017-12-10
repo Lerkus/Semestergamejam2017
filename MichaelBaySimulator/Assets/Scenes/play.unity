@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 115956439}
   - component: {fileID: 115956438}
   - component: {fileID: 115956441}
+  - component: {fileID: 115956442}
   m_Layer: 5
   m_Name: StartFilmSceneButton
   m_TagString: Untagged
@@ -276,6 +277,17 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 115956441}
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 115956442}
+        m_MethodName: setPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -400,6 +412,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &115956442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115956436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97b42cd1f0fb5148a805200b21e3d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bm: {fileID: 1333813365}
 --- !u!1 &222803589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,6 +1230,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gm: {fileID: 534005160}
+  bm: {fileID: 1333813365}
+  ClapperBoard: {fileID: 115956436}
 --- !u!114 &1004029777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1419,6 +1445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pm: {fileID: 222803590}
+  bombAdded: 0
 --- !u!4 &1333813366
 Transform:
   m_ObjectHideFlags: 0
