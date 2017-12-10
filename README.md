@@ -10,3 +10,5 @@ TODO Zeug für Sonntag:
 -wenn genug zeit: gesichter von zuschauern für endscreen
 
 -tweets
+
+-evtl highscore speichern
