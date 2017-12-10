@@ -53,6 +53,7 @@ public class Bomb_slave : MonoBehaviour
                 explodeAnim.transform.position = new Vector3(explodeAnim.transform.position.x,
                     explodeAnim.transform.position.y + explodeAnim.transform.localScale.y/2,
                     explodeAnim.transform.position.z);
+                Camera.main.GetComponent<ScreenShake>().shake = 0.3f;
                 Destroy(this.gameObject);
             }
         }
