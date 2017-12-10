@@ -49,7 +49,10 @@ public class Pause : MonoBehaviour {
 
     public void MainMenu()
     {
-        pointsMaster.SetSlavesQuitting();
+        if (pointsMaster != null)
+        {
+            pointsMaster.SetSlavesQuitting();
+        }
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }
