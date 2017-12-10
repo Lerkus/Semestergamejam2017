@@ -211,7 +211,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 115956436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 810.00006, y: -490.32788, z: 0}
+  m_LocalPosition: {x: 810, y: -489.7865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1716486952}
@@ -376,7 +376,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 259012457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -950.00006, y: 530.3279, z: 0}
+  m_LocalPosition: {x: -950, y: 529.7865, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1716486952}
@@ -578,6 +578,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c48f64db65271c543823c77b7aa16bbb, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &551956385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 551956386}
+  - component: {fileID: 551956387}
+  m_Layer: 0
+  m_Name: ScoreSingleton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &551956386
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 551956385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &551956387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 551956385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2559abe4533ea41b1e4411b4f9e141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ScorePrefab: {fileID: 1056581134982560, guid: 207056c6490bc97488e0ea3780254b35,
+    type: 2}
 --- !u!1 &568405041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1367,8 +1409,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1716486948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 274.5, y: 154.5, z: 0}
-  m_LocalScale: {x: 0.2859375, y: 0.2859375, z: 0.2859375}
+  m_LocalPosition: {x: 281, y: 158, z: 0}
+  m_LocalScale: {x: 0.29270834, y: 0.29270834, z: 0.29270834}
   m_Children:
   - {fileID: 340962976}
   - {fileID: 115956437}

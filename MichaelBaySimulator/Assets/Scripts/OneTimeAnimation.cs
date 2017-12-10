@@ -9,10 +9,5 @@ public class OneTimeAnimation : MonoBehaviour {
 	void Start () {
         anim = gameObject.GetComponent<Animator>();
         Destroy(gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
-    }
-	
-	// Update is called once per frame
-	void Update () {
-
-    }
+    }	
 }
