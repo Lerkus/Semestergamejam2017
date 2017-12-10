@@ -8,3 +8,5 @@ TODO Zeug für Sonntag:
 -barrels grafik anpassen
 
 -wenn genug zeit: gesichter von zuschauern für endscreen
+
+-tweets
