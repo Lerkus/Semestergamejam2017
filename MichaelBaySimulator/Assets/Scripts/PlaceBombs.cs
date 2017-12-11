@@ -115,7 +115,9 @@ public class PlaceBombs : MonoBehaviour
     {
         Vector2 currentMousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         currentPlaceableExplosiv.transform.position = currentMousePosition;
-        float scalingFactor = Mathf.Sin(buttonPressDuration * scalingFactorMultiplier - Mathf.PI / 2) * maximumExplosivScale + maximumExplosivScale + 1;
+        float scalingFactor = 8;
+        scalingFactor += Mathf.Abs(Mathf.Sin(buttonPressDuration * scalingFactorMultiplier)) * maximumExplosivScale;
+        
         currentPlaceableExplosiv.transform.localScale = new Vector2(scalingFactor, scalingFactor);
         currentPlaceableExplosiv.GetComponent<Bomb_slave>()._BombRadius = currentPlaceableExplosiv.transform.GetChild(0).transform.lossyScale.x * _ExplosivRadiusTweaker;
         currentPlaceableExplosiv.GetComponent<Bomb_slave>()._ExplosionRadius = currentPlaceableExplosiv.transform.GetChild(0).transform.lossyScale.x * _TriggerRadiusTweaker; //scalingFactor * 2
